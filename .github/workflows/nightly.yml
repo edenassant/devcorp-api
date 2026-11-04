@@ -1,13 +1,16 @@
 name: Nightly Check
 
+
 on:
-  workflow_dispatch:
-    inputs:
-      target-env:
-        description: "Environnement cible"
-        type: choice
-        options: [development, staging, production]
-        default: staging
+  push
+#on:
+#  workflow_dispatch:
+#    inputs:
+#      target-env:
+#        description: "Environnement cible"
+#        type: choice
+#        options: [development, staging, production]
+#        default: staging
 
 jobs:
   nightly-tests:
