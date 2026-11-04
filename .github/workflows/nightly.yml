@@ -3,7 +3,6 @@ name: Nightly Check
 
 on:
   push:
-  workflow_dispatch:
     inputs:
       target-env:
         description: "Environnement cible"
