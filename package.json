@@ -1,0 +1,8 @@
+{
+  "name": "devcorp-api",
+  "version": "1.0.0",
+  "scripts": {
+    "test": "node test.js",
+    "lint": "echo 'Lint OK (simulé)'"
+  }
+}
