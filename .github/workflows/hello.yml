@@ -1,0 +1,24 @@
+name: Hello World
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch: # Permet le lancement manuel
+
+jobs:
+  greet:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Afficher un message
+        run: echo "Bonjour depuis GitHub Actions !"
+
+      - name: Informations sur le runner
+        run: |
+          echo "OS : ${{ runner.os }}"
+          echo "Dépôt : ${{ github.repository }}"
+          echo "Branche : ${{ github.ref_name }}"
+          echo "Déclenché par : ${{ github.actor }}"
+          echo "SHA du commit : ${{ github.sha }}"
+
+      - name: Date et heure
+        run: date
