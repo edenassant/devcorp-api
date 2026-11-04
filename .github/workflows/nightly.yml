@@ -1,0 +1,31 @@
+name: Nightly Check
+
+on:
+  schedule:
+    - cron: "0 1 * * *" # Chaque nuit à 1h UTC
+  workflow_dispatch:
+    inputs:
+      target-env:
+        description: "Environnement cible"
+        type: choice
+        options: [development, staging, production]
+        default: staging
+
+jobs:
+  nightly-tests:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Afficher la configuration
+        run: |
+          echo "Déclenchement : ${{ github.event_name }}"
+          echo "Environnement : ${{ inputs.target-env || 'aucun (lancement programmé)' }}"
+
+      - name: Tests
+        run: npm test
+
+      - name: Rapport final
+        run: |
+          echo "## Nightly Check du $(date '+%Y-%m-%d')" >> $GITHUB_STEP_SUMMARY
+          echo "Déclenché par : **${{ github.event_name }}**" >> $GITHUB_STEP_SUMMARY
